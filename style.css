@@ -216,20 +216,85 @@ body{
     gap: 5px;
 }
 
-.banner .big-banner{
-    flex-grow: 2;
+.big_banner_wrapper{
+    width: 800px;
+
     position: relative;
 }
 
-.banner .big-banner .image{
-    background-image: url(images/bb-1.png);
-    background-position: center;
-    background-size: cover;
-    height: 235px;
-    border-radius: 2px;
+.big_banner{
+    position: relative;
+}
+.slick-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 35px;
+    height: 60px;
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.25s linear;
+}
+.btn-left{
+    left: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
-.banner .big-banner .btn-left{
+.btn-right{
+    right: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.big_banner_wrapper:hover .slick-arrow{
+    opacity: 1;
+}
+
+.slick-arrow:hover{
+    cursor: pointer;
+    background: rgba(0, 0, 0, .6);
+}
+
+
+
+
+.slick-dots{
+    display: flex !important;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slick-dots li{
+
+    list-style: none;
+    margin-right: 8px;
+}
+
+.slick-dots button{
+    font-size: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: hsla(0,0%,100%,.4);
+}
+
+.slick-dots .slick-active button{
+    background: orangered;
+}
+
+/* .banner .big_banner_wrapper .btn-left{
     position: absolute;
     left: 0;
     top: 50%;
@@ -242,23 +307,23 @@ body{
     display: none;
 }
 
-.banner .big-banner:hover .btn-left{
+.banner .big_banner_wrapper:hover .btn-left{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.banner .big-banner:hover .btn-left:hover{
+.banner .big_banner_wrapper:hover .btn-left:hover{
     cursor: pointer;
     background: rgba(0, 0, 0, .6);
 }
 
-.banner .big-banner .btn-left i{
+.banner .big_banner_wrapper .btn-left i{
     font-size: 1.5rem;
     color: #fff;
 }
 
-.banner .big-banner .btn-right{
+.banner .big_banner_wrapper .btn-right{
     position: absolute;
     right: 0;
     top: 50%;
@@ -271,27 +336,26 @@ body{
     display: none;
 }
 
-.banner .big-banner:hover .btn-right{
+.banner .big_banner_wrapper:hover .btn-right{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.banner .big-banner:hover .btn-right:hover{
+.banner .big_banner_wrapper:hover .btn-right:hover{
     cursor: pointer;
     background: rgba(0, 0, 0, .6);
 }
 
-.banner .big-banner .btn-right i{
+.banner .big_banner_wrapper .btn-right i{
     font-size: 1.5rem;
     color: #fff;
-}
+} */
 
 
 .banner .small-banner{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     gap: 5px;
 }
 
@@ -1208,6 +1272,157 @@ body{
     color: rgba(0, 0, 0, .65);
 }
 
+/* Thành phần ẩn khi chưa hover */
+
+.hide_on_noti{
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 1px 12px 0 rgb(0 0 0 / 12%);
+    top: 30px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .25s linear;
+    border-radius: 2px;
+    display: none;
+}
+
+.navbar-item.noti:hover .hide_on_noti{
+    display: block;
+}
+
+.hide_on_noti::after{
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: 16px;
+    border-width: 12px 16px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.hide_on_noti .noti_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 310px;
+}
+
+.hide_on_noti .noti_main i{
+    display: block;
+    font-size: 120px;
+    color: rgba(0, 0, 0, .65);
+    margin-bottom: 30px;
+    margin-left: -120px;
+}
+
+.hide_on_noti .noti_main h3{
+    font-weight: 300;
+    color: rgba(0, 0, 0, .65);
+}
+
+.hide_on_noti .noti_footer{
+    display: flex;
+}
+
+.hide_on_noti .noti_footer button{
+    background-color: #f4f3f3;
+    padding: 12px 0;
+    width: 50%;
+    border: none;
+    transition: .1s linear;
+}
+
+.hide_on_noti .noti_footer button:hover{
+    color: #ee4d2d;
+    background-color: #e1e1e1;
+}
+
+/* Hiện ngôn ngữ */
+
+.hide_on_lang{
+    position: absolute;
+    top: 30px;
+    background: #fff;
+    z-index: 1000;
+    right: 0;
+    border-radius: 2px;
+    min-width: 200px;
+    display: none;
+    transition: .25s linear;
+    box-shadow: 0 1px 12px 0 rgb(0 0 0 / 12%);
+}
+
+.navbar-item.lang:hover .hide_on_lang{
+    display: block;
+}
+
+.hide_on_lang::after{
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: 30px;
+    border-width: 12px 16px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.hide_on_lang p{
+    padding: 12px 8px;
+    color: #000;
+}
+
+.hide_on_lang p:hover{
+    color: #ee4d2d;
+}
+
+/* Ẩn hiện tải ứng dụng trên header */
+
+.hide_on_downapp{
+    width:175px;
+    background: #fff;
+    z-index: 1000;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    padding: 4px;
+    box-shadow: 0 1px 12px 0 rgb(0 0 0 / 12%);
+    border-radius: 2px;
+    display: none;
+    transform: .25s linear;
+}
+
+.navbar-item.downapp:hover .hide_on_downapp{
+    display: block;
+}
+
+.hide_on_downapp div:first-child{
+    width: 100%;
+}
+.hide_on_downapp div:first-child img{
+    width: 100%;
+    margin-bottom: 16px;
+    /* height: 100%; */
+}
+
+.hide_on_downapp div:last-child{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.hide_on_downapp div:last-child img{
+    width: 40%;
+    margin-bottom: 12px;
+}
 
 
 
